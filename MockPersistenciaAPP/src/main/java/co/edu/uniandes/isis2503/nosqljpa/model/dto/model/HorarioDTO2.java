@@ -21,30 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.model.entity;
+package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
-import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import org.joda.time.Hours;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author mf.mena
  */
-@Entity
-@Table(name = "HORARIOS")
-public class HorarioEntity implements Serializable {
+@XmlRootElement
+public class HorarioDTO2 {
+     private String id;
 
-    @Id
-    private String id;
-
-    private Date inicio;
-    private Date fin;
-    private String inmueble;
+    private String inicio;
+    private String fin;
     
+    private String inmueble;
+    private String usuario;
+
     public String getInmueble() {
         return inmueble;
     }
@@ -60,19 +55,17 @@ public class HorarioEntity implements Serializable {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    private String usuario;
-
-    public HorarioEntity() {
+    
+    public HorarioDTO2() {
     }
 
-    public HorarioEntity(String id,Date inicio,Date fin,String i,String u) {
+    public HorarioDTO2(String id,String inicio,String fin,String u,String i) {
         this.id = id;
         this.inicio=inicio;
         this.fin=fin;
         this.usuario=u;
         this.inmueble=i;
     }
-
     public String getId() {
         return id;
     }
@@ -81,19 +74,30 @@ public class HorarioEntity implements Serializable {
         this.id = id;
     }
 
-    public Date getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(Date inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
-      public Date getFin() {
+      public String getFin() {
         return fin;
     }
 
-    public void setFin(Date fin) {
+    public void setFin(String fin) {
         this.fin = fin;
     }
-
+    
+    public HorarioDTO convert(){
+        HorarioDTO h=new HorarioDTO();
+        Date inic=new Date(2018, 05, 11, Integer.parseInt(this.inicio.substring(0, 1)), Integer.parseInt(this.inicio.substring(3, 4)));
+        Date fin=new Date(2018, 05, 11, Integer.parseInt(this.fin.substring(0, 1)), Integer.parseInt(this.fin.substring(3, 4)));
+        h.setInicio(inic);
+        h.setFin(fin);
+        h.setUsuario(this.usuario);
+        h.setInmueble(this.inmueble);
+        return h;
+    } 
 }
+

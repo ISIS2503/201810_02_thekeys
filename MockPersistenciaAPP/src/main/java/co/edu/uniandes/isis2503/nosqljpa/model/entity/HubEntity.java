@@ -45,26 +45,15 @@ public class HubEntity implements Serializable {
     private String correoPropietario;
     
     private String documentoPropietario;
-    
-    private List<String> horarios;
 
-    public List<String> getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(List<String> horarios) {
-        this.horarios = horarios;
-    }
-    
     public HubEntity(){
-        horarios=new ArrayList<>();
+        
     }
 
     public HubEntity(String id,String correo,String doc){
         this.id=id;
         this.correoPropietario=correo;
         this.documentoPropietario=doc;
-        horarios=new ArrayList<>();
     }    
     public String getId() {
         return id;

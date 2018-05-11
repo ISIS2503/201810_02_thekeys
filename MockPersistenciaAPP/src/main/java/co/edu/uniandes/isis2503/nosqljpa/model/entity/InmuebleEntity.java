@@ -49,13 +49,25 @@ public class InmuebleEntity implements Serializable {
     private String cerradura;
     
     private String hub;
+    
+    @ElementCollection
+    private List<String> horarios;
 
-    public InmuebleEntity(String id, String direccion, String cerradura, String hub, List<String> alarmas) {
+    public List<String> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<String> horarios) {
+        this.horarios = horarios;
+    }
+
+    public InmuebleEntity(String id, String direccion, String cerradura, String hub, List<String> alarmas,List<String> horarios) {
         this.id = id;
         this.direccion = direccion;
         this.cerradura = cerradura;
         this.hub = hub;
         this.alarmas = alarmas;
+        this.horarios=horarios;
     }
     
     @ElementCollection

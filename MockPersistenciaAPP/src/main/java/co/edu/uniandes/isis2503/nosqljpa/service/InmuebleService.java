@@ -42,14 +42,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IAlarmaLogic;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHorarioLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleLogic;
+import co.edu.uniandes.isis2503.nosqljpa.logic.HorarioLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.HubLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO2;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HorarioDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HorarioDTO2;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HubDTO;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.InmuebleDTO2;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -62,12 +67,14 @@ public class InmuebleService {
     
     private final IInmuebleLogic inmuebleLogic;
     private final IAlarmaLogic alarmaLogic;
+    private final IHorarioLogic horarioLogic;
     private final IHubLogic hubLogic;
 
     public InmuebleService() {
         this.inmuebleLogic = new InmuebleLogic();
         this.alarmaLogic = new AlarmaLogic();
         this.hubLogic = new HubLogic();
+        this.horarioLogic=new HorarioLogic();
     }
 
     @POST
@@ -102,6 +109,20 @@ public class InmuebleService {
         InmuebleDTO inmueble = inmuebleLogic.find(id);
         HubDTO result = hubLogic.add(dto);
         inmueble.setHub(dto.getId());
+        update(inmueble);
+        return result;
+    }
+    
+    @POST
+    @Path("{id}/horario")
+    @Secured({Role.yale,Role.propietario})
+    public HorarioDTO addHorario(@PathParam("id") String id, HorarioDTO2 dto) {
+        InmuebleDTO inmueble = inmuebleLogic.find(id);
+        HorarioDTO result = horarioLogic.add(dto.convert());
+        if(inmueble.getHorarios()==null){
+            inmueble.setHorarios(new ArrayList<String>());
+        }
+        inmueble.addHorario(result.getId());
         update(inmueble);
         return result;
     }
@@ -182,4 +203,29 @@ public class InmuebleService {
             return Response.status(500).header("Access-Control-Allow-Origin", "*").entity("We found errors in your query, please contact the Web Admin.").build();
         }
     }    
+    
+     @GET
+    @Path("/{id}/open")
+    public boolean findApertura(@PathParam("id") String id) {
+        InmuebleDTO i=inmuebleLogic.find(id);
+        boolean x=false;
+        if(i!=null){
+            Date h1=new Date(System.currentTimeMillis());
+            for(String h:i.getHorarios()){
+                HorarioDTO hAct=horarioLogic.find(h);
+                if(hAct!=null){
+                    SimpleDateFormat s =new SimpleDateFormat("hh:mm");
+                    int inic=Integer.parseInt(s.format(hAct.getInicio()).substring(0, 1)+s.format(hAct.getInicio()).substring(3, 4));
+                    int intento=Integer.parseInt(s.format(h1).substring(0, 1)+s.format(h1).substring(3, 4));
+                    int fin=Integer.parseInt(s.format(hAct.getFin()).substring(0, 1)+s.format(hAct.getFin()).substring(3, 4));
+                    if(inic>=intento && intento<=fin){
+                        x=true;
+                    }
+                }    
+            }
+        }
+        return x;
+    }
+
+    
 }

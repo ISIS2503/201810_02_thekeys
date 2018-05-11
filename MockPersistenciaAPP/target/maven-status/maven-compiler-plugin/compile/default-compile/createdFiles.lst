@@ -34,6 +34,7 @@ co\edu\uniandes\isis2503\nosqljpa\logic\AlarmaLogic.class
 co\edu\uniandes\isis2503\nosqljpa\persistence\HorarioPersistence.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\model\AlarmaDTO.class
 co\edu\uniandes\isis2503\nosqljpa\model\entity\HubEntity.class
+co\edu\uniandes\isis2503\nosqljpa\model\dto\model\HorarioDTO2.class
 co\edu\uniandes\isis2503\nosqljpa\logic\InmuebleLogic.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\converter\AlarmaConverter.class
 co\edu\uniandes\isis2503\nosqljpa\model\dto\converter\HubConverter.class

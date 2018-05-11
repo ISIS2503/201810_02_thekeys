@@ -32,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class HorarioDTO {
-     private String id;
+    
+    private String id;
 
     private Date inicio;
     private Date fin;

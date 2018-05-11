@@ -38,25 +38,15 @@ public class HubDTO {
     private String correoPropietario;
     
     private String documentoPropietario;
-    private List<String> horarios;
 
-    public List<String> getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(List<String> horarios) {
-        this.horarios = horarios;
-    }
     
     public HubDTO(){
-        horarios=new ArrayList<>();
     }
     
     public HubDTO(String id, String correoPropietario, String documentoPropietario) {
         this.id = id;
         this.correoPropietario = correoPropietario;
         this.documentoPropietario = documentoPropietario;
-        horarios=new ArrayList<>();
     }
 
     public String getId() {

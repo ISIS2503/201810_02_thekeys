@@ -29,6 +29,7 @@ import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHorarioLogic;
 import co.edu.uniandes.isis2503.nosqljpa.logic.HorarioLogic;
 import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HorarioDTO;
 import com.sun.istack.logging.Logger;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ws.rs.DELETE;

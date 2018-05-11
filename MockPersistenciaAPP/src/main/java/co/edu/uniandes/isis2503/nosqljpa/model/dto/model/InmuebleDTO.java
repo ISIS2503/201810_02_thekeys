@@ -40,17 +40,28 @@ public class InmuebleDTO {
     private String cerradura;
     private List<String> alarmas;
     private String hub;
-    
-    public InmuebleDTO() {
-        this.alarmas= new ArrayList<>();
+    private List<String> horarios;
+
+    public List<String> getHorarios() {
+        return horarios;
     }
 
-    public InmuebleDTO(String id, String direccion, String cerradura, List<String> alarmas, String hub) {
+    public void setHorarios(List<String> horarios) {
+        this.horarios = horarios;
+    }
+            
+    public InmuebleDTO() {
+        this.alarmas= new ArrayList<>();
+        this.horarios=new ArrayList<>();
+    }
+
+    public InmuebleDTO(String id, String direccion, String cerradura,List<String> alarmas, String hub,List<String> horarios) {
         this.id = id;
         this.direccion = direccion;
         this.cerradura = cerradura;
         this.alarmas = alarmas;
         this.hub = hub;
+        this.horarios=horarios;
     }
 
     public String getHub() {
@@ -96,5 +107,9 @@ public class InmuebleDTO {
 
     public void addAlarma(String alarma){
         this.alarmas.add(alarma);
+    }
+    
+    public void addHorario(String h){
+        this.horarios.add(h);
     }
 }

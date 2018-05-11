@@ -46,7 +46,6 @@ public class HubConverter implements IHubConverter {
         dto.setId(entity.getId());
         dto.setCorreoPropietario(entity.getCorreoPropietario());
         dto.setDocumentoPropietario(entity.getDocumentoPropietario());
-        dto.setHorarios(entity.getHorarios());
         return dto;
     }
 
@@ -56,7 +55,6 @@ public class HubConverter implements IHubConverter {
         entity.setId(dto.getId());
         entity.setCorreoPropietario(dto.getCorreoPropietario());
         entity.setDocumentoPropietario(dto.getDocumentoPropietario());
-        entity.setHorarios(dto.getHorarios());
         return entity;
     }
 
