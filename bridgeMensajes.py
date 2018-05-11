@@ -6,7 +6,7 @@ consumer = KafkaConsumer('alarma.conjunto1.baja.1-101',
                          bootstrap_servers=['172.24.42.103:8090'])
 for message in consumer:
  json_data = json.loads(message.value.decode('utf-8'))
- if json_data.get('seNotifica')==false:
+ if json_data.get('seNotifica')==False:
      pass
  else:
      correo= json_data.get('correo')
