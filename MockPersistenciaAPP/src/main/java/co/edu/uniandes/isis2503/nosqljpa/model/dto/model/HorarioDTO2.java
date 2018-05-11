@@ -91,8 +91,8 @@ public class HorarioDTO2 {
     
     public HorarioDTO convert(){
         HorarioDTO h=new HorarioDTO();
-        Date inic=new Date(2018, 05, 11, Integer.parseInt(this.inicio.substring(0, 1)), Integer.parseInt(this.inicio.substring(3, 4)));
-        Date fin=new Date(2018, 05, 11, Integer.parseInt(this.fin.substring(0, 1)), Integer.parseInt(this.fin.substring(3, 4)));
+        Date inic=new Date(2018, 05, 11, Integer.parseInt(this.inicio.substring(0, 2)), Integer.parseInt(this.inicio.substring(3, 5)));
+        Date fin=new Date(2018, 05, 11, Integer.parseInt(this.fin.substring(0, 2)), Integer.parseInt(this.fin.substring(3, 5)));
         h.setInicio(inic);
         h.setFin(fin);
         h.setUsuario(this.usuario);

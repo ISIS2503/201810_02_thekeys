@@ -215,9 +215,9 @@ public class InmuebleService {
                 HorarioDTO hAct=horarioLogic.find(h);
                 if(hAct!=null){
                     SimpleDateFormat s =new SimpleDateFormat("hh:mm");
-                    int inic=Integer.parseInt(s.format(hAct.getInicio()).substring(0, 1)+s.format(hAct.getInicio()).substring(3, 4));
-                    int intento=Integer.parseInt(s.format(h1).substring(0, 1)+s.format(h1).substring(3, 4));
-                    int fin=Integer.parseInt(s.format(hAct.getFin()).substring(0, 1)+s.format(hAct.getFin()).substring(3, 4));
+                    int inic=Integer.parseInt(s.format(hAct.getInicio()).substring(0, 2)+s.format(hAct.getInicio()).substring(3, 5));
+                    int intento=Integer.parseInt(s.format(h1).substring(0, 2)+s.format(h1).substring(3, 5));
+                    int fin=Integer.parseInt(s.format(hAct.getFin()).substring(0, 2)+s.format(hAct.getFin()).substring(3, 5));
                     if(inic>=intento && intento<=fin){
                         x=true;
                     }
