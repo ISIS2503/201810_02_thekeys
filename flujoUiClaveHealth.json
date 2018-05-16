@@ -70,7 +70,7 @@
         "type": "mqtt out",
         "z": "e4b9d186.6567c",
         "name": "",
-        "topic": "alarma/conjunto1/alta/1-101/pre",
+        "topic": "alarma.conjunto1.alta.1-101.pre",
         "qos": "",
         "retain": "",
         "broker": "d4d19ebc.98ba5",
@@ -583,7 +583,7 @@
         "type": "function",
         "z": "e4b9d186.6567c",
         "name": "",
-        "func": "if(msg.payload===\"0\")\n{\n    global.set(\"timeH\",global.get(\"time\"));\n    msg.payload=10;\n}\nelse\n{\n    var timee=global.get(\"time\");\n    var timehh=global.get(\"timeH\");\n    var inter=global.get(\"intervalo\");\n    var maxx=global.get(\"max\");\n    msg.payload=10;\n    if((timee-timehh)>(inter*maxx*1000))\n    {\n    msg.payload=1;    \n    }\n    \n}\n    \n\nreturn msg;",
+        "func": "if(msg.payload!==\"1\")\n{\n    global.set(\"timeH\",global.get(\"time\"));\n    msg.payload=10;\n}\nelse\n{\n    var timee=global.get(\"time\");\n    var timehh=global.get(\"timeH\");\n    var inter=global.get(\"intervalo\");\n    var maxx=global.get(\"max\");\n    msg.payload=10;\n    if((timee-timehh)>(inter*maxx*1000))\n    {\n    msg.payload=1;    \n    }\n    \n}\n    \n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 550,
@@ -592,7 +592,7 @@
             [
                 "ff1066ef.5bfbd8",
                 "fd45704.a305b9",
-                "34e72e21.2ae032"
+                "682e0295.5b634c"
             ]
         ]
     },
@@ -838,8 +838,8 @@
         "secure": true,
         "name": "rafafor26@gmail.com",
         "dname": "",
-        "x": 900,
-        "y": 480,
+        "x": 920,
+        "y": 500,
         "wires": []
     },
     {
@@ -879,20 +879,6 @@
         ]
     },
     {
-        "id": "34e72e21.2ae032",
-        "type": "debug",
-        "z": "e4b9d186.6567c",
-        "name": "TEST",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 550,
-        "y": 540,
-        "wires": []
-    },
-    {
         "id": "68fdb0ec.5f262",
         "type": "mqtt out",
         "z": "e4b9d186.6567c",
@@ -901,9 +887,64 @@
         "qos": "",
         "retain": "",
         "broker": "d4d19ebc.98ba5",
-        "x": 480,
+        "x": 580,
         "y": 460,
         "wires": []
+    },
+    {
+        "id": "682e0295.5b634c",
+        "type": "function",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "func": "if(msg.payload===\"10\")\n{\n    msg.payload=\"OK\";\n    \n}\nelse\n{\n    msg.payload=\"Correo Electronico enviado, no se detecta entidad fisica\";\n    \n    \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 720,
+        "y": 560,
+        "wires": [
+            [
+                "1707511b.274e1f"
+            ]
+        ]
+    },
+    {
+        "id": "9f9d63e2.bd8c3",
+        "type": "ui_toast",
+        "z": "e4b9d186.6567c",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 930,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "1707511b.274e1f",
+        "type": "delay",
+        "z": "e4b9d186.6567c",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "6",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 900,
+        "y": 560,
+        "wires": [
+            [
+                "9f9d63e2.bd8c3"
+            ]
+        ]
     },
     {
         "id": "9d34177b.cfd178",
@@ -913,16 +954,14 @@
         "topic": "",
         "payload": "0",
         "payloadType": "num",
-        "repeat": "",
+        "repeat": "2",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "x": 190,
         "y": 460,
         "wires": [
-            [
-                "68fdb0ec.5f262"
-            ]
+            []
         ]
     },
     {
