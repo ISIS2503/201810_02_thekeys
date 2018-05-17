@@ -139,7 +139,6 @@ public class InmuebleService {
     }
     
     
-    
     @GET
     @Path("/{id}/hub")
     public HubDTO findHub(@PathParam("id") String id) {

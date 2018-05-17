@@ -62,10 +62,6 @@ public class AlarmaLogic implements IAlarmaLogic {
         return CONVERTER.entityToDto(persistence.find(id));
     }
     
-    @Override
-    public AlarmaDTO findCode(String code) {
-        return CONVERTER.entityToDto(persistence.findCode(code));
-    }
 
     @Override
     public List<AlarmaDTO> all() {

@@ -32,6 +32,7 @@
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.AlarmaEntity</class>
     <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.HorarioEntity</class>
+    <class>co.edu.uniandes.isis2503.nosqljpa.model.entity.SeguridadEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="kundera.nodes" value="localhost"/>
@@ -43,7 +44,7 @@
       <property name="kundera.pool.size.max.idle" value="100"/>
       <property name="kundera.pool.size.max.active" value="100"/>
       <property name="kundera.pool.size.max.total" value="100"/>
-      <property name="kundera.ddl.auto.prepare" value="update"/>
+      <property name="kundera.ddl.auto.prepare" value="create-drop"/>
     </properties>
   </persistence-unit>
 </persistence>

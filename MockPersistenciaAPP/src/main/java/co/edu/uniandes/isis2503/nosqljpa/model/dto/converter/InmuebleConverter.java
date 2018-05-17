@@ -28,9 +28,6 @@ import co.edu.uniandes.isis2503.nosqljpa.model.entity.InmuebleEntity;
 import java.util.ArrayList;
 import java.util.List;
 import co.edu.uniandes.isis2503.nosqljpa.interfaces.IInmuebleConverter;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
-import co.edu.uniandes.isis2503.nosqljpa.model.entity.AlarmaEntity;
-
 /**
  *
  * @author ca.mendoza968
@@ -50,7 +47,6 @@ public class InmuebleConverter implements IInmuebleConverter {
         dto.setCerradura(entity.getCerradura());
         dto.setAlarmas(entity.getAlarmas());
         dto.setHub(entity.getHub());
-        System.out.println("co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.InmuebleConverter.entityToDto()---------------------------------------------------------"+entity.getHorarios());
         dto.setHorarios(entity.getHorarios());
         return dto;
     }

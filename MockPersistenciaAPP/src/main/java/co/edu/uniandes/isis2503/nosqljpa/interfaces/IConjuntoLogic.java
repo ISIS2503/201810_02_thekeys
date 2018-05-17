@@ -34,7 +34,6 @@ public interface IConjuntoLogic {
     public ConjuntoDTO add(ConjuntoDTO dto);
     public ConjuntoDTO update(ConjuntoDTO dto);
     public ConjuntoDTO find(String id);
-    public ConjuntoDTO findCode(String code);
     public List<ConjuntoDTO> findAlarmasPorBarrio(String barrio);
     public List<ConjuntoDTO> all();
     public Boolean delete(String id);

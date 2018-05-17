@@ -94,6 +94,7 @@ public class Persistencer<T, PK> {
             entities = null;
             LOG.log(Level.WARNING, e.getMessage());
         }
+
         return entities;
     }
 
@@ -110,10 +111,10 @@ public class Persistencer<T, PK> {
         }
     }
 
-    public T findCode(String code) {
+    public T findCorreo(String correo) {
         T entity;
-        String queryString = "Select c FROM " + entityClass.getSimpleName() + " c where c.code = :code1";
-        Query query = entityManager.createQuery(queryString).setParameter("code1", code);
+        String queryString = "Select c FROM " + entityClass.getSimpleName() + " c where c.correo = :code1";
+        Query query = entityManager.createQuery(queryString).setParameter("code1", correo);
         try {
             entity = (T) query.getSingleResult();
         } catch (NoResultException | NonUniqueResultException e) {

@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2017 Universidad De Los Andes - Departamento de Ingeniería de Sistemas.
+ * Copyright 2018 Universidad De Los Andes - Departamento de Ingeniería de Sistemas.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +23,20 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.interfaces;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.SeguridadDTO;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.SeguridadEntity;
 import java.util.List;
 
 /**
  *
- * @author ca.mendoza968
+ * @author mf.mena
  */
-public interface IAlarmaLogic {
-    public AlarmaDTO add(AlarmaDTO dto);
-    public AlarmaDTO update(AlarmaDTO dto);
-    public AlarmaDTO find(String id);
-    public List<AlarmaDTO> all();
-    public Boolean delete(String id);
+public interface ISeguridadConverter {
+    public SeguridadDTO entityToDto(SeguridadEntity entity);
+
+    public SeguridadEntity dtoToEntity(SeguridadDTO dto);
+
+    public List<SeguridadDTO> listEntitiesToListDTOs(List<SeguridadEntity> entities);
+
+    public List<SeguridadEntity> listDTOsToListEntities(List<SeguridadDTO> dtos);    
 }

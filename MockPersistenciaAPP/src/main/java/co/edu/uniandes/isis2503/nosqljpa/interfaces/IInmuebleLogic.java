@@ -34,7 +34,6 @@ public interface IInmuebleLogic {
     public InmuebleDTO add(InmuebleDTO dto);
     public InmuebleDTO update(InmuebleDTO dto);
     public InmuebleDTO find(String id);
-    public InmuebleDTO findCode(String code);
     public List<InmuebleDTO> all();
     public Boolean delete(String id);
 }

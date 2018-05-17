@@ -23,10 +23,10 @@
  */
 package co.edu.uniandes.isis2503.nosqljpa.logic;
 
-import co.edu.uniandes.isis2503.nosqljpa.interfaces.IHorarioLogic;
-import static co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.HorarioConverter.CONVERTER;
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.HorarioDTO;
-import co.edu.uniandes.isis2503.nosqljpa.persistence.HorarioPersistence;
+import static co.edu.uniandes.isis2503.nosqljpa.model.dto.converter.SeguridadConverter.CONVERTER;
+import co.edu.uniandes.isis2503.nosqljpa.interfaces.ISeguridadLogic;
+import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.SeguridadDTO;
+import co.edu.uniandes.isis2503.nosqljpa.persistence.SeguridadPersistence;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,35 +34,40 @@ import java.util.UUID;
  *
  * @author mf.mena
  */
-public class HorarioLogic implements IHorarioLogic {
-    private final HorarioPersistence persistence;
+public class SeguridadLogic implements ISeguridadLogic{
+    
+    private final SeguridadPersistence persistence;
 
-    public HorarioLogic() {
-        this.persistence = new HorarioPersistence();
+    public SeguridadLogic() {
+        this.persistence= new SeguridadPersistence();
     }
-
+    
     @Override
-    public HorarioDTO add(HorarioDTO dto) {
-        if (dto.getId() == null) {
+    public SeguridadDTO add(SeguridadDTO dto) {
+         if(dto.getId()==null){
             dto.setId(UUID.randomUUID().toString());
-        }
-        HorarioDTO result = CONVERTER.entityToDto(persistence.add(CONVERTER.dtoToEntity(dto)));
+         }
+        SeguridadDTO result = CONVERTER.entityToDto(persistence.add(CONVERTER.dtoToEntity(dto)));
         return result;
     }
 
     @Override
-    public HorarioDTO update(HorarioDTO dto) {
-        HorarioDTO result = CONVERTER.entityToDto(persistence.update(CONVERTER.dtoToEntity(dto)));
+    public SeguridadDTO update(SeguridadDTO dto) {
+        SeguridadDTO result = CONVERTER.entityToDto(persistence.update(CONVERTER.dtoToEntity(dto)));
         return result;
     }
 
     @Override
-    public HorarioDTO find(String id) {
+    public SeguridadDTO find(String id) {
         return CONVERTER.entityToDto(persistence.find(id));
     }
+    
+    public SeguridadDTO findCorreo(String correo){
+        return CONVERTER.entityToDto(persistence.findCorreo(correo));
+    }
 
     @Override
-    public List<HorarioDTO> all() {
+    public List<SeguridadDTO> all() {
         return CONVERTER.listEntitiesToListDTOs(persistence.all());
     }
 
@@ -70,4 +75,6 @@ public class HorarioLogic implements IHorarioLogic {
     public Boolean delete(String id) {
         return persistence.delete(id);
     }
+
+   
 }

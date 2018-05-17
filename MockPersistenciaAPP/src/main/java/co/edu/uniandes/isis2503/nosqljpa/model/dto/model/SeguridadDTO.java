@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2017 Universidad De Los Andes - Departamento de Ingeniería de Sistemas.
+ * Copyright 2018 Universidad De Los Andes - Departamento de Ingeniería de Sistemas.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,19 +21,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.interfaces;
-
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
-import java.util.List;
+package co.edu.uniandes.isis2503.nosqljpa.model.dto.model;
 
 /**
  *
- * @author ca.mendoza968
+ * @author mf.mena
  */
-public interface IAlarmaLogic {
-    public AlarmaDTO add(AlarmaDTO dto);
-    public AlarmaDTO update(AlarmaDTO dto);
-    public AlarmaDTO find(String id);
-    public List<AlarmaDTO> all();
-    public Boolean delete(String id);
+public class SeguridadDTO {
+    
+    private String id;
+    
+    private String correo;
+    
+    private String conjunto;
+    
+    public SeguridadDTO(){
+    }
+
+    public SeguridadDTO(String id, String correo, String conjunto) {
+        this.id = id;
+        this.correo = correo;
+        this.conjunto = conjunto;
+    }
+
+   
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getConjunto() {
+        return conjunto;
+    }
+
+    public void setConjunto(String conjunto) {
+        this.conjunto = conjunto;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
+    
 }

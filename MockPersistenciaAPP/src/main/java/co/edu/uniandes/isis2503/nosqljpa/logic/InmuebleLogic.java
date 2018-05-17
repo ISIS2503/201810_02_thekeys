@@ -71,8 +71,4 @@ public class InmuebleLogic implements IInmuebleLogic {
         return persistence.delete(id);
     }
 
-    @Override
-    public InmuebleDTO findCode(String code) {
-        return CONVERTER.entityToDto(persistence.findCode(code));
-    }
 }

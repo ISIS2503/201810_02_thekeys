@@ -34,7 +34,6 @@ public interface IHorarioLogic {
     public HorarioDTO add(HorarioDTO dto);
     public HorarioDTO update(HorarioDTO dto);
     public HorarioDTO find(String id);
-    public HorarioDTO findCode(String code);
     public List<HorarioDTO> all();
     public Boolean delete(String id);
     

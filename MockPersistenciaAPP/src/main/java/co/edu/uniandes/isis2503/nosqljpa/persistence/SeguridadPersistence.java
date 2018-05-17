@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2017 Universidad De Los Andes - Departamento de Ingeniería de Sistemas.
+ * Copyright 2018 Universidad De Los Andes - Departamento de Ingeniería de Sistemas.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,19 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package co.edu.uniandes.isis2503.nosqljpa.interfaces;
+package co.edu.uniandes.isis2503.nosqljpa.persistence;
 
-import co.edu.uniandes.isis2503.nosqljpa.model.dto.model.AlarmaDTO;
-import java.util.List;
+import co.edu.uniandes.isis2503.nosqljpa.model.entity.SeguridadEntity;
 
 /**
  *
- * @author ca.mendoza968
+ * @author mf.mena
  */
-public interface IAlarmaLogic {
-    public AlarmaDTO add(AlarmaDTO dto);
-    public AlarmaDTO update(AlarmaDTO dto);
-    public AlarmaDTO find(String id);
-    public List<AlarmaDTO> all();
-    public Boolean delete(String id);
+public class SeguridadPersistence extends Persistencer<SeguridadEntity, String>{
+    
+    public SeguridadPersistence() {
+        this.entityClass=SeguridadEntity.class;
+    }
 }
