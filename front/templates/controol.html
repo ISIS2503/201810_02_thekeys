@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- socketio-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js" charset="utf-8"></script>
+    <title>Alarmas de Seguridad</title>
+  </head>
+  <style>
+  .container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;  
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+  }
+  .espacio
+  {
+    margin: 0 0 150px 0;
+  }
+  .logout{
+    margin: 0 0 10px 1175px;
+  }
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    margin: 0 0 0 0;
+  }
+  .boton{
+    margin: 0 0 0 0;
+    width:20px;
+    height:20px;
+  }
+  .conjunto{
+    margin: 0 0 0 0px;
+    font-size: 10px
+  }
+  </style>
+  <body>
+<div class="container-login100" style="background-image: https://drive.google.com/file/d/1UyUrWlZMIzGcMSChdySNizhqUkjsX3Gy/view?usp=sharing;">
+  <label class="espacio"></label>
+  <form action="/logout" class="logout">
+      <input type="submit" value="Logout" class="btn btn-secondary"></button>
+  </form>
+  <div class="container">
+    <table class="table table-striped table-responsive">
+      <tbody id="alarmas-conjuntos">
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+<script>
+  const socket = io();
+  var numeroColumnas =0;
+  socket.on('inmuebles', function (path){
+    if(numeroColumnas<=20)
+    var cod ="<td><div><button id=\"boton" + path + "\" type=\"button\" class=\"btn-circle boton\"></button><br><label class=\"conjunto\" >" +path + "</label></div></td>"
+    $('#alarmas-conjuntos').append(cod);
+  })
+</script>
+  </body>
+</html>
