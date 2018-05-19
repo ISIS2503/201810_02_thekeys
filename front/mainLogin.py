@@ -23,7 +23,7 @@ def home():
     else:
         return ""
 
-@app.route('/login', methods=['POST'])
+@app.route('/panel', methods=['POST'])
 def do_admin_login():
     correo=  request.form['correo electronico']
     contraseña= request.form['password']
@@ -36,11 +36,10 @@ def do_admin_login():
     if response.status_code == 200:
         session['logged_in'] = True
         constructorTopico(correo)
-        return render_template('controol.html')
+        return render_template('index.html')
     else:
         flash('wrong password!')
     return home()
-
 @app.route("/logout")
 def logout():
     session['logged_in'] = False
@@ -61,24 +60,10 @@ def background_thread_websocket():
     consumer = KafkaConsumer(bootstrap_servers=['172.24.42.103:8090'])
     consumer.subscribe(arregloTopicos)
     for message in consumer:
-        print(message.topic)
-        socketio.emit('alarmas', 'hola')
-
-def transformador(cuerpo):
-    split = message.topic.split('.')
-    apartamento= split[3]
-    msg = message.value
-    tipo = ' '
-    if 2 in msg:
-        tipo = 'contraseña incorrecta 3 veces'
-    elif 1 in msg:
-        tipo = 'sensor de movimiento activado'
-    elif 3 in msg:
-        tipo = 'puerta abierta'
-    elif 4 in msg:
-        tipo = 'bateria baja en la cerradura'
-    socketio.emit('message',apartamento +' Estado: ' + tipo)
-
+        print('consumi')
+        split = message.topic.split('.')
+        apartamento= split[3]
+        socketio.emit('alarmas', apartamento)
 # Rutina que se ejecuta cada vez que se conecta un cliente de websocket e inicia el conmunidor de Kafka
 @socketio.on('connect')
 def test_connect():
